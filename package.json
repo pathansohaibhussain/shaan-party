@@ -1,0 +1,9 @@
+{
+  "name": "shaan-party",
+  "private": true,
+  "description": "Test runner for the extension logic. The extension itself has no build step.",
+  "scripts": {
+    "test": "node --test extension/tests/sync-math.test.js extension/tests/content-core.test.js extension/tests/hotstar-adapter.test.js tests/web-room.test.js tests/deploy-files.test.js",
+    "check:java": "cd server-spring && javac -d target/dev-checks src/main/java/com/shaan/party/AdvanceGate.java src/main/java/com/shaan/party/RateLimiter.java src/main/java/com/shaan/party/SearchGuard.java src/main/java/com/shaan/party/LinkParser.java src/main/java/com/shaan/party/RoomQueue.java src/main/java/com/shaan/party/Iso.java src/main/java/com/shaan/party/TextUtil.java dev-checks/ServerChecks.java && java -cp target/dev-checks ServerChecks"
+  }
+}

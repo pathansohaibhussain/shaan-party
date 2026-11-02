@@ -1,0 +1,9 @@
+Shaan Party: quick notes
+
+Start:   double-click start-party.bat  (starts the Spring server + ngrok tunnel)
+Settings: party.config.json  (ngrok URL + port; copy party.config.example.json if it is missing)
+Server URL for the extension popup: the wss:// version of your ngrok URL (the launcher prints it)
+Web room: <ngrok url>/app
+
+GIPHY key: do NOT write it in this file or in git. Paste it into the extension popup (stored only in your browser).
+The old key that was in this file should be treated as leaked: delete it at https://developers.giphy.com/dashboard/ and create a new one.

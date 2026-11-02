@@ -1,0 +1,13 @@
+.git
+.gitignore
+.vscode
+node_modules
+**/target
+extension
+tests
+*.md
+*.bat
+*.ps1
+party.config*.json
+shaan party doc.txt
+package.json

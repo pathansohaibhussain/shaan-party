@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Shaan Party",
+  "version": "1.9.0",
+  "description": "Private watch party for Hotstar, YouTube, local files and (per-site) other video pages. No accounts, just a room code.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://*.hotstar.com/*",
+    "https://*.jiohotstar.com/*",
+    "https://www.youtube.com/*",
+    "https://youtube.com/*",
+    "https://api.giphy.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Shaan Party"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.hotstar.com/*",
+        "https://*.jiohotstar.com/*"
+      ],
+      "js": [
+        "core/sync-math.js",
+        "platforms/hotstar/adapter.js",
+        "core/content-core.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://youtube.com/*"
+      ],
+      "js": [
+        "core/sync-math.js",
+        "platforms/youtube/adapter.js",
+        "core/content-core.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "sidebar/sidebar.html"
+      ],
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "use_dynamic_url": true
+    }
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

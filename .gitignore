@@ -1,0 +1,14 @@
+# build output
+server-spring/target/
+node_modules/
+
+# local settings and secrets
+party.config.json
+*.local
+.env
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Shaan Party">
+  <title>Shaan Party</title>
+  <link rel="stylesheet" href="/app/style.css">
+</head>
+<body>
+
+<div id="landing" class="screen">
+  <div class="card">
+    <div class="logo big"><span class="logo-mark">▶</span><span class="logo-text">Shaan Party</span></div>
+    <p class="sub">Watch YouTube together, in sync.</p>
+    <label>Your name</label>
+    <input id="name" maxlength="24" placeholder="Nickname" autocomplete="off">
+    <label>Avatar</label>
+    <select id="avatar"></select>
+    <button id="create" class="primary">Create a room</button>
+    <div class="or">or join a room</div>
+    <div class="row"><input id="code" placeholder="Room code" maxlength="32" autocapitalize="off" autocomplete="off"><button id="join">Join</button></div>
+    <div id="landing-msg" class="msg"></div>
+  </div>
+</div>
+
+<div id="room" class="screen hidden">
+  <header>
+    <div class="logo"><span class="logo-mark">▶</span><span class="logo-text">Shaan Party</span></div>
+    <div class="code" title="Room code"><b id="room-code"></b></div>
+    <div class="tools">
+      <button id="members-btn" title="Members">👥 <span id="count">0</span></button>
+      <button id="help-btn" title="Share from the YouTube app (iPhone)">📲</button>
+      <button id="invite-btn" title="Invite">🔗</button>
+      <button id="leave-btn" title="Leave">🚪</button>
+    </div>
+  </header>
+  <div id="status">Connecting…</div>
+
+  <main>
+    <section id="stage">
+      <div id="playerWrap">
+        <div id="player"></div>
+        <div id="empty">Pick something to watch together</div>
+        <button id="unlock" class="hidden">▶ Tap to start watching in sync</button>
+      </div>
+      <div id="now">
+        <div id="now-title">Nothing playing yet</div>
+        <div id="now-sub">
+          <button id="now-chan" class="linkbtn hidden" type="button"></button>
+          <button id="next-btn" class="pill hidden" type="button">⏭ Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel">
+      <nav id="tabs">
+        <button id="tab-browse" class="tab on" type="button">Browse</button>
+        <button id="tab-queue" class="tab" type="button">Queue <span id="queue-count" class="badge hidden"></span></button>
+        <button id="tab-chat" class="tab" type="button">Chat <span id="chat-dot" class="dot hidden"></span></button>
+      </nav>
+
+      <div id="pane-browse" class="pane">
+        <div id="feed-scroll">
+          <div class="searchrow">
+            <button id="search-open" class="searchbar" type="button">🔍 Search YouTube or paste a link</button>
+            <button id="paste-btn" class="roundbtn" type="button" title="Paste a copied YouTube link">📋</button>
+          </div>
+          <div id="cat-chips" class="chiprow sticky"></div>
+          <div id="feed"></div>
+          <div id="feed-note"></div>
+          <button id="feed-more" class="more hidden" type="button">Show more</button>
+        </div>
+      </div>
+
+      <div id="pane-queue" class="pane hidden">
+        <div class="pane-head"><button id="queue-clear" class="pill hidden" type="button">Clear queue</button></div>
+        <div id="queue-list"></div>
+      </div>
+
+      <div id="pane-chat" class="pane hidden">
+        <div id="members" class="hidden"></div>
+        <div id="chat"></div>
+        <div id="typing"></div>
+        <div id="reactions"></div>
+        <div id="emoji-panel" class="hidden"></div>
+        <div class="composer">
+          <input id="msg" placeholder="Type a message…" maxlength="500" autocomplete="off" enterkeyhint="send">
+          <button id="emoji-btn" type="button">😀</button>
+          <button id="send-btn" class="primary" type="button">Send</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- search -->
+  <div id="search" class="sheet hidden" role="dialog" aria-label="Search YouTube">
+    <div class="sheet-head">
+      <button id="search-close" class="iconbtn" type="button" title="Back">←</button>
+      <form id="search-form" action="#">
+        <input id="search-input" type="search" enterkeyhint="search" placeholder="Search YouTube or paste a link" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      </form>
+    </div>
+    <div id="search-types" class="chiprow">
+      <button id="st-video" class="chip on" type="button">Videos</button>
+      <button id="st-channel" class="chip" type="button">Channels</button>
+      <button id="st-playlist" class="chip" type="button">Playlists</button>
+    </div>
+    <div id="search-note"></div>
+    <div id="search-results" class="scroll"></div>
+  </div>
+
+  <!-- channel / playlist page -->
+  <div id="page" class="sheet hidden" role="dialog" aria-label="Channel or playlist">
+    <div class="sheet-head">
+      <button id="page-back" class="iconbtn" type="button" title="Back">←</button>
+      <div id="page-title" class="page-title"></div>
+    </div>
+    <div id="page-scroll" class="scroll">
+      <div id="page-info"></div>
+      <div id="page-note"></div>
+      <div id="page-list"></div>
+      <button id="page-more" class="more hidden" type="button">Show more</button>
+    </div>
+  </div>
+
+  <!-- iPhone: share from the YouTube app -->
+  <div id="help" class="sheet hidden" role="dialog" aria-label="Share from the YouTube app">
+    <div class="sheet-head">
+      <button id="help-close" class="iconbtn" type="button" title="Close">←</button>
+      <div class="page-title">Share from the YouTube app</div>
+    </div>
+    <div id="help-body" class="scroll"></div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- ⋮ menu -->
+  <div id="actions" class="backdrop hidden"></div>
+</div>
+
+<script src="/app/sync-math.js"></script>
+<script src="/app/yt-search.js"></script>
+<script src="/app/app.js"></script>
+<script src="/app/browse.js"></script>
+</body>
+</html>

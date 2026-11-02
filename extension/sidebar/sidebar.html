@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="sidebar.css"></head>
+<body>
+<header>
+  <div class="brand">Shaan Party</div>
+  <div class="tools">
+    <button id="diag-btn" title="Why isn't it syncing?">🩺</button>
+    <button id="members-btn" title="Members">👥 <span id="count">0</span></button>
+    <button id="code-btn" title="Copy room code">#</button>
+    <button id="copy-btn" title="Copy invite link">🔗</button>
+    <button id="min-btn" title="Minimize">➖</button>
+    <button id="leave-btn" title="Leave party">🚪</button>
+  </div>
+</header>
+<div id="status">Connecting…</div>
+<div id="allow-banner" class="hidden"><span id="allow-text"></span><button id="allow-btn">Allow player</button></div>
+<div id="members" class="hidden"></div>
+<div id="diag" class="hidden"><pre id="diag-out"></pre><div class="diag-row">Movie length (min): <input id="exp-min" type="number" min="1"><button id="exp-set">Set</button></div>
+  <div class="diag-row" style="margin-top:6px"><button id="push-btn">Send my position</button><button id="pull-btn">Get party position</button></div></div>
+<div id="chat"></div>
+<div id="typing"></div>
+<div id="reactions"></div>
+<div id="emoji-panel" class="panel hidden"></div>
+<div id="gif-panel" class="panel hidden">
+  <input id="gif-q" placeholder="Search GIFs (needs GIPHY key in popup)">
+  <div id="gif-results"></div>
+</div>
+<footer>
+  <input id="msg" placeholder="Type a message…" maxlength="500" autocomplete="off">
+  <button id="gif-btn">GIF</button>
+  <button id="emoji-btn">😀</button>
+</footer>
+<script src="../core/sync-math.js"></script>
+<script src="sidebar.js"></script>
+</body></html>

@@ -1,0 +1,16 @@
+# Optional "Blueprint" for Render (New + > Blueprint). The manual steps in README.md work without this file.
+services:
+  - type: web
+    name: shaan-party
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /app/index.html
+    envVars:
+      - key: YOUTUBE_API_KEY
+        sync: false            # you type it in the Render dashboard; it is never stored in git
+      - key: YOUTUBE_DAILY_UNITS
+        value: "9000"
+      - key: YOUTUBE_REGION
+        value: "IN"

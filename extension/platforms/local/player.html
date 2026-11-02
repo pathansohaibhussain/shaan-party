@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Shaan Party Player</title>
+  <link rel="stylesheet" href="player.css">
+</head>
+<body>
+  <header>
+    <div class="brand">Shaan Party Player</div>
+    <div id="title">No video loaded</div>
+    <div class="actions">
+      <button id="open-btn">Open video</button>
+      <button id="sub-btn">Subtitles</button>
+      <button id="fs-btn">Fullscreen</button>
+      <button id="start-btn" class="accent">Start party</button>
+      <input id="code" placeholder="room code" maxlength="32">
+      <button id="join-btn">Join</button>
+    </div>
+  </header>
+  <div id="status">Open the same video file as your friend, then start or join a party.</div>
+  <div id="stage">
+    <video id="video" controls controlsList="nofullscreen"></video>
+    <div id="empty">Drop a video file here<br><small>or click “Open video”. Both of you need the same file.</small></div>
+  </div>
+  <input type="file" id="file" accept="video/*,.mkv" hidden>
+  <input type="file" id="subfile" accept=".srt,.vtt" hidden>
+  <script src="../../core/sync-math.js"></script>
+  <script src="adapter.js"></script>
+  <script src="../../core/content-core.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+body{width:300px;margin:0;padding:14px;background:#14141c;color:#e8e8f0;font:13px system-ui,sans-serif}
+h1{margin:0 0 10px;font-size:18px;background:linear-gradient(90deg,#7c5cff,#22d3ee);-webkit-background-clip:text;color:transparent}
+label{display:block;margin:8px 0 3px;color:#9a9ab5;font-size:11px}
+input,select{width:100%;padding:7px;border-radius:6px;border:1px solid #33334a;background:#22222f;color:#fff}
+button{width:100%;margin-top:10px;padding:9px;border:0;border-radius:6px;color:#fff;font-weight:600;cursor:pointer;background:linear-gradient(90deg,#7c5cff,#22d3ee)}
+button.alt{background:#2a2a3c}
+#msg{margin-top:8px;color:#fbbf24;min-height:16px}
+.row{display:flex;gap:6px}.row button{margin-top:0}
+</style></head><body>
+<h1>Shaan Party</h1>
+<label>Your nickname</label><input id="name" maxlength="24">
+<label>Avatar</label><select id="icon"></select>
+<label>Server URL</label><input id="server" placeholder="ws://localhost:8080">
+<label>GIPHY API key (optional, for GIFs)</label><input id="giphy">
+<button class="alt" id="test">Test server connection</button>
+<button class="alt" id="save">Save settings</button>
+<button class="alt" id="enable">Enable on this site (other websites)</button>
+<button class="alt" id="disable">Disable on this site</button>
+<label style="display:flex;gap:6px;align-items:center;margin-top:10px;color:#e8e8f0"><input type="checkbox" id="adclose" style="width:auto"> Close ad pop-up tabs during a party <span id="adcount" style="color:#9a9ab5"></span></label>
+<button class="alt" id="local">Open local video player</button>
+<button id="start">Start a party on this tab</button>
+<label>Or join with a room code</label>
+<div class="row"><input id="code" placeholder="room code"><button class="alt" id="join" style="width:80px">Join</button></div>
+<div id="msg"></div>
+<script src="popup.js"></script>
+</body></html>
